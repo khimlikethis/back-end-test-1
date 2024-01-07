@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.post('/multiple', checkAuth, (req, res) => {
     const payload = req.body;
 
-    if (!payload.a) return res.status(422).send("Unsupported data format");
-    if (!payload.b) return res.status(422).send("Unsupported data format");
+    if (!payload.a) return res.status(422).json({ error : "Unsupported data format"});
+    if (!payload.b) return res.status(422).json({ error : "Unsupported data format"});
   
     const result = {
       sum: payload.a * payload.b,
